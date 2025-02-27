@@ -1,0 +1,8 @@
+typer==0.3.2
+colorama==0.4.4
+shellingham==1.4.0
+requests
+tree-sitter-languages==1.10.2
+llama-index==0.12.19
+json5==0.10.0
+llama-index-packs-code-hierarchy==0.4.1
