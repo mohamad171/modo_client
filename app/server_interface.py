@@ -53,4 +53,22 @@ class Server:
                 return False , response.json()["message"] 
             else:
                 return False , "Internal server error"
+    def save_graph(self,relations,nodes,project_id):
+        header = {
+            "Authorization":f"Token {self.__token}"
+        }
+        data = {
+            "relations":relations,
+            "nodes":nodes,
+            "project":project_id
+        }
+        response = requests.post(f"{self.base_url}/projects/save-graph",headers=header,data=data)
+        if response.status_code in [200,201,204]:
+            return True,response.json()
+        else:
+            if response.status_code == 400:
+                print(response.json())
+                return False , response.json()["message"] 
+            else:
+                return False , "Internal server error"
         

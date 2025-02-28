@@ -97,6 +97,15 @@ def build_graph():
                     progress.update(task, visible=False)
                     print(f"\nNodes: {len(nodes)}",f"\nRelations: {len(relationships)}")
 
+                    task = progress.add_task("[cyan]Saveing graphes on server...",total=1)
+                    status,result = server.save_graph(relationships,nodes,project["id"])
+                    if status:
+                        print("[green]Graph saved.[/green]")
+                    else:
+                        print(f"[red]{result}[/red]")
+                    progress.update(task, visible=False)
+                         
+
 
 @app.command(name="logout",help="logout from modo code")
 def logout():
