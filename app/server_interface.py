@@ -58,7 +58,7 @@ class Server:
             "Authorization":f"Token {self.__token}"
         }
         data = {
-            "relations":relations,
+            "relationships":relations,
             "nodes":nodes,
             "project":project_id
         }
