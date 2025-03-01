@@ -58,8 +58,8 @@ class Server:
             "Authorization":f"Token {self.__token}"
         }
         data = {
-            "relationships":relations,
-            "nodes":nodes,
+            "relationships":json.dumps(relations),
+            "nodes":json.dumps(nodes),
             "project":project_id
         }
         response = requests.post(f"{self.base_url}/projects/save-graph",headers=header,data=data)
