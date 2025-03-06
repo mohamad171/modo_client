@@ -105,7 +105,25 @@ def build_graph():
                         print(f"[red]{result}[/red]")
                     progress.update(task, visible=False)
                          
+@app.command(name="ask_question",help="Ask question")
+def ask_question(question):
+    projects = init()
+    project = None
+    for project in projects:
+        if os.getcwd() == project["local_path"]:
+            project = project
+    if not project:
+        print("[red]You should init project first[/red]")
+        return
+    with Progress(SpinnerColumn(), TextColumn("[progress.description]{task.description}")) as progress:                    
+                    task = progress.add_task("[cyan]Asking...",total=1)
 
+                    status,result = server.ask_question(question,project["id"])
+                    if status:
+                        print(f"[blue]{result['data']['ai']}[/blue]")
+                    else:
+                        print(f"[red]{result}[/red]")
+                    progress.update(task, visible=False)
 
 @app.command(name="logout",help="logout from modo code")
 def logout():
