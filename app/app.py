@@ -1,3 +1,5 @@
+import sys
+import time
 import typer
 from rich import print,prompt
 from .server_interface import Server
@@ -106,7 +108,7 @@ def build_graph():
                     progress.update(task, visible=False)
                          
 @app.command(name="ask_question",help="Ask question")
-def ask_question(question):
+def ask_question():
     projects = init()
     project = None
     for project in projects:
@@ -115,15 +117,24 @@ def ask_question(question):
     if not project:
         print("[red]You should init project first[/red]")
         return
-    with Progress(SpinnerColumn(), TextColumn("[progress.description]{task.description}")) as progress:                    
+    while True:
+        try:
+            user_input = input(">>> ")
+            if user_input.strip() == "exit()":
+                break
+            with Progress(SpinnerColumn(), TextColumn("[progress.description]{task.description}")) as progress:                    
                     task = progress.add_task("[cyan]Asking...",total=1)
 
-                    status,result = server.ask_question(question,project["id"])
+                    status,result = server.ask_question(user_input.strip(),project["id"])
+                    progress.update(task, visible=False)
                     if status:
                         print(f"[blue]{result['data']['ai']}[/blue]")
                     else:
                         print(f"[red]{result}[/red]")
-                    progress.update(task, visible=False)
+                    
+        except (KeyboardInterrupt, EOFError):
+            break
+    
 
 @app.command(name="logout",help="logout from modo code")
 def logout():

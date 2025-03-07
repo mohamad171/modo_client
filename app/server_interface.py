@@ -62,7 +62,7 @@ class Server:
             "nodes":json.dumps(nodes),
             "project":project_id
         }
-        response = requests.post(f"{self.base_url}/projects/save-graph",headers=header,data=data,timeout=120)
+        response = requests.post(f"{self.base_url}/projects/save-graph",headers=header,data=data,timeout=170)
         if response.status_code in [200,201,204]:
             return True,response.json()
         else:
