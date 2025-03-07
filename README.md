@@ -11,6 +11,10 @@ related to those projects, and receive AI-generated responses.
 - **Initialize a Project**: Users can create a new project with a specified name and programming language.
 - **Ask Questions**: Once a project is initialized, users can pose questions related to their projects and receive AI-generated responses.
 
+## Supported Languages
+``` Python - C# - Typescript - Javascript - Go ```
+
+
 ## Installation
 
 
@@ -33,7 +37,7 @@ related to those projects, and receive AI-generated responses.
 
 1. **Initialize a Project:**
 
-   Run the following command to start the project initialization process:
+   Run the following command at root of project to start the project initialization process:
 
    ```bash
    modo init
@@ -46,7 +50,7 @@ related to those projects, and receive AI-generated responses.
    After initializing a project, you can ask questions like this:
 
    ```bash
-   modo ask "What should I prioritize in this project?"
+   modo ask_question
    ```
 
 ## Contributing
