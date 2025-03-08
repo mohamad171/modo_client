@@ -22,9 +22,13 @@ dependencies = [
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+
 [tool.poetry.scripts]
-modo = "main:app"
+modo = "modo_code.main:app"
+
+
 [tool.poetry]
 packages = [
-    { include = "app" }
+    { include = "modo_code" }
 ]
