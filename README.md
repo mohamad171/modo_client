@@ -60,3 +60,13 @@ If you'd like to contribute to the project, please fork the repository and submi
 ## License
 
 This project is licensed under the MIT License
+
+## Check list
+- [ ] **Support new languages**
+   - [ ] C#
+   - [ ] GoLang
+   - [*] Dart
+   - [ ] PHP
+
+- [ ] **Update command**
+   - [ ] New command to update librarry
