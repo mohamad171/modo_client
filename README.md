@@ -65,7 +65,7 @@ This project is licensed under the MIT License
 - [ ] **Support new languages**
    - [ ] C#
    - [ ] GoLang
-   - [*] Dart
+   - [x] Dart
    - [ ] PHP
 
 - [ ] **Update command**
