@@ -12,6 +12,7 @@ from graph_construction.languages.javascript.jsx_parser import JsxParser
 from graph_construction.languages.python.python_parser import PythonParser
 from graph_construction.languages.ruby.ruby_parser import RubyParser
 from graph_construction.languages.typescript.tsx_parser import TsxParser
+from graph_construction.languages.dart.dart_parser import DartParser
 from graph_construction.languages.typescript.typescript_parser import (
     TypescriptParser,
 )
@@ -27,6 +28,7 @@ class Parsers(object):
     tsx: TsxParser
     jsx: JsxParser
     ruby: RubyParser
+    dart: DartParser
     alias_extractor: BaseAliasExtractor = BaseAliasExtractor()
 
     def __init__(self, global_graph_info: GlobalGraphInfo, root_path: str):
@@ -36,6 +38,7 @@ class Parsers(object):
         self.tsx = TsxParser(global_graph_info)
         self.jsx = JsxParser(global_graph_info)
         self.ruby = RubyParser(global_graph_info)
+        self.dart = DartParser(global_graph_info)
         self._run_precompute_tasks(root_path, global_graph_info)
 
     def get_parser(self, path: str) -> BaseParser | None:
@@ -48,6 +51,8 @@ class Parsers(object):
             return self.typescript
         elif extension == ".tsx" or extension == ".jsx":  # Treat .jsx as .tsx
             return self.tsx
+        elif extension == ".dart":
+            return self.dart
         else:
             return None
 
