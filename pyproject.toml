@@ -1,6 +1,6 @@
 [project]
 name = "modo-code"
-version = "0.1.3"
+version = "0.2.1"
 description = "Modo code assistant client"
 authors = [
     {name = "mohamad171",email = "mohamadmohamadi249@gmail.com"}
