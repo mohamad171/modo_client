@@ -5,6 +5,8 @@ from rich import print,prompt
 from .server_interface import Server
 from .local_handler import LocalHandler
 from rich.progress import Progress, SpinnerColumn, TextColumn
+from rich.markdown import Markdown
+from rich.console import Console
 from graph_construction.core.graph_builder import GraphConstructor
 import os
 
@@ -123,12 +125,14 @@ def ask_question():
             if user_input.strip() == "exit()":
                 break
             with Progress(SpinnerColumn(), TextColumn("[progress.description]{task.description}")) as progress:                    
-                    task = progress.add_task("[cyan]Asking...",total=1)
+                    task = progress.add_task("[cyan]Asking...[/cyan]\n",total=1)
 
                     status,result = server.ask_question(user_input.strip(),project["id"])
                     progress.update(task, visible=False)
                     if status:
-                        print(f"[blue]{result['data']['ai']}[/blue]")
+                        console = Console()
+                        md = Markdown(result['data']['ai'])
+                        console.print(md)
                     else:
                         print(f"[red]{result}[/red]")
                     
